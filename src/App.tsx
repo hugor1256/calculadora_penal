@@ -1,15 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import Header from './components/Header';
+import PrisonTable from './components/Table';
+
+import { Crime } from './interfaces/crime';
 
 import './styles/App.css';
 
 function App() {
-  return (
-    <>
-		<Header />
-    </>
-  );
+    const [crimes, setCrimes] = useState<Crime[]>([]);
+
+    return (
+        <>
+            <Header/>
+            <PrisonTable
+                crimes={crimes}
+            />
+        </>
+    );
 }
 
 export default App;
