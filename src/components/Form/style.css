@@ -4,6 +4,6 @@
     margin-top: 50px;
 }
 
-.form div {
+.form > div {
     flex: 0.5;
 }

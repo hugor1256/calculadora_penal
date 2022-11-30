@@ -7,8 +7,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Chip from '@mui/material/Chip';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-import {Crime} from "../../interfaces/crime";
+import { Crime } from "../../interfaces/crime";
 
 interface PrisonTableProps {
     crimes: Crime[]
@@ -38,10 +40,14 @@ const PrisonTable = ({
                             <TableCell component="th" scope="row">
                                 {crime.crime}
                             </TableCell>
-                            <TableCell>{crime.type}</TableCell>
+                            <TableCell>
+                                <Chip  color="primary" label={crime.type} variant="outlined" />
+                            </TableCell>
                             <TableCell>{crime.months}</TableCell>
-                            <TableCell>{crime.trafficTicket}</TableCell>
-                            <TableCell>ICONE DE LIXEIRA</TableCell>
+                            <TableCell>{crime.trafficTicket.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</TableCell>
+                            <TableCell>
+                                <DeleteIcon />
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

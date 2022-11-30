@@ -5,7 +5,7 @@ export const allCrimes: Crime[] = [
         crime: 'ATROPELAMENTO',
         type: 'TRÂNSITO',
         months: 40,
-        trafficTicket: 30.000,
+        trafficTicket: 30000,
         haveBail: false,
     }
 ];
