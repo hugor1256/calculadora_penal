@@ -19,6 +19,7 @@ const Main = ({
     return (
         <main className="main">
             <PrisonTable
+                setCrimes={setCrimes}
                 crimes={crimes}
             />
 
