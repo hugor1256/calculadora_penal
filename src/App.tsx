@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 
 import Header from './components/Header';
-import PrisonTable from './components/Table';
-import Form from './components/Form';
+import Main from './components/Main';
 
 import { Crime } from './interfaces/crime';
 
@@ -14,13 +13,9 @@ function App() {
     return (
         <>
             <Header/>
-            <PrisonTable
+            <Main
                 crimes={crimes}
-            />
-
-            <Form
                 setCrimes={setCrimes}
-                crimes={crimes}
             />
         </>
     );
