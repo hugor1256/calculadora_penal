@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import Header from './components/Header';
 import PrisonTable from './components/Table';
+import Form from './components/Form';
 
 import { Crime } from './interfaces/crime';
 
@@ -14,6 +15,11 @@ function App() {
         <>
             <Header/>
             <PrisonTable
+                crimes={crimes}
+            />
+
+            <Form
+                setCrimes={setCrimes}
                 crimes={crimes}
             />
         </>
