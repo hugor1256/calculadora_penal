@@ -56,7 +56,7 @@ const PrisonResumeCard = ({
                 </CardContent>
 
                 <CardActions>
-                    <Button size="small">Learn More</Button>
+                    <Button size="small">Exportar dados</Button>
                 </CardActions>
             </Card>
         </Box>
