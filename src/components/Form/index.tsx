@@ -55,6 +55,7 @@ const Form = ({
                 </Select>
             </FormControl>
             <Button
+                onClick={handleSubmit}
                 color="primary"
                 type="button"
                 variant="contained"
