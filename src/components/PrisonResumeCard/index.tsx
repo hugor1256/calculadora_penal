@@ -9,17 +9,24 @@ import Typography from '@mui/material/Typography';
 import { Crime } from "../../interfaces/crime";
 
 import './styles.css';
+import {applyDiscount} from "../../helper/applyDiscount";
 
 interface FormProps {
     crimes: Crime[]
+    isFisrtOffender: boolean
 }
 
 const PrisonResumeCard = ({
-    crimes
+    crimes,
+    isFisrtOffender
 }: FormProps) => {
     const resolveTrafficTicket = (): number => {
         const initalTrafficTicket = 20000;
         const totalTrafficTicket = crimes.reduce((acumulador, numero) => acumulador + numero.trafficTicket, 0);
+
+        if (isFisrtOffender) {
+            return totalTrafficTicket > 0 ? applyDiscount(30, totalTrafficTicket) : applyDiscount(30, initalTrafficTicket);
+        }
 
         return totalTrafficTicket > 0 ? totalTrafficTicket : initalTrafficTicket;
     }

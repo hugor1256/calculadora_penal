@@ -10,6 +10,7 @@ import './styles.css';
 
 const Main = () => {
     const [crimes, setCrimes] = useState<Crime[]>([]);
+    const [isFisrtOffender, setIsFisrtOffender] = useState<boolean>(false);
 
     return (
         <main className="main">
@@ -21,9 +22,12 @@ const Main = () => {
             <Form
                 setCrimes={setCrimes}
                 crimes={crimes}
+                setIsFisrtOffender={setIsFisrtOffender}
+                isFisrtOffender={isFisrtOffender}
             />
 
             <PrisonResumeCard
+                isFisrtOffender={isFisrtOffender}
                 crimes={crimes}
             />
         </main>

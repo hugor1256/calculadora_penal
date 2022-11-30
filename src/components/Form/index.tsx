@@ -12,10 +12,13 @@ import { allCrimes } from '../../data/allCrimes';
 
 import './style.css';
 import CustomAlert from "../Alert";
+import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 
 interface FormProps {
     setCrimes: Dispatch<SetStateAction<Crime[]>>
     crimes: Crime[]
+    setIsFisrtOffender: Dispatch<SetStateAction<boolean>>
+    isFisrtOffender: boolean
 }
 
 interface AlertType {
@@ -27,6 +30,8 @@ interface AlertType {
 const Form = ({
     setCrimes,
     crimes,
+    setIsFisrtOffender,
+    isFisrtOffender
 }: FormProps) => {
     const [crime, setCrime] = useState('');
     const [alert, setAlert] = useState({} as AlertType);
@@ -83,15 +88,23 @@ const Form = ({
                             </MenuItem>
                         ))}
                     </Select>
+
+                    <Button
+                        onClick={handleSubmit}
+                        color="primary"
+                        type="button"
+                        variant="contained"
+                    >
+                        Adicionar
+                    </Button>
                 </FormControl>
-                <Button
-                    onClick={handleSubmit}
-                    color="primary"
-                    type="button"
-                    variant="contained"
-                >
-                    Adicionar
-                </Button>
+
+                <FormGroup className="formGroupCheckbox">
+                    <FormControlLabel
+                        control={<Checkbox checked={isFisrtOffender} onChange={() => setIsFisrtOffender(!isFisrtOffender)} />}
+                        label="Réu primário? (-30%)"
+                    />
+                </FormGroup>
             </form>
         </>
     )
