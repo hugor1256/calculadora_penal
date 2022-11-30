@@ -2,6 +2,7 @@ import React, {Dispatch, SetStateAction} from "react";
 
 import PrisonTable from '../Table';
 import Form from '../Form';
+import PrisonResumeCard from '../PrisonResumeCard';
 
 import { Crime } from '../../interfaces/crime';
 
@@ -25,6 +26,10 @@ const Main = ({
 
             <Form
                 setCrimes={setCrimes}
+                crimes={crimes}
+            />
+
+            <PrisonResumeCard
                 crimes={crimes}
             />
         </main>
