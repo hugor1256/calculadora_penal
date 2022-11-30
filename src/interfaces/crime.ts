@@ -3,4 +3,5 @@ export interface Crime {
     type: string;
     months: number;
     trafficTicket: number;
-};
+    haveBail: boolean;
+}
