@@ -1,4 +1,4 @@
-import React,  {Dispatch, SetStateAction, useState } from 'react';
+import React,  {Dispatch, SetStateAction, useState, useEffect } from 'react';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,10 +11,17 @@ import { Crime } from "../../interfaces/crime";
 import { allCrimes } from '../../data/allCrimes';
 
 import './style.css';
+import CustomAlert from "../Alert";
 
 interface FormProps {
     setCrimes: Dispatch<SetStateAction<Crime[]>>
     crimes: Crime[]
+}
+
+interface AlertType {
+    type: 'warning' | 'info' | 'error' | 'success';
+    message: string;
+    className?: string;
 }
 
 const Form = ({
@@ -22,9 +29,30 @@ const Form = ({
     crimes,
 }: FormProps) => {
     const [crime, setCrime] = useState('');
-    const handleChange = (event: SelectChangeEvent) => setCrime(event.target.value);
+    const [alert, setAlert] = useState({} as AlertType);
+
+    useEffect(() => {
+        if (Object.keys(alert).length > 0) {
+            setTimeout(() => {
+                setAlert({} as AlertType);
+            }, 3000);
+        }
+    }, [alert]);
+
+    const handleChange = (event: SelectChangeEvent) => {
+        setCrime(event.target.value);
+        setAlert({} as AlertType);
+    };
 
     const handleSubmit = () => {
+        if (!crime) {
+            setAlert({
+                type: 'warning',
+                message: 'Selecione um crime antes de enviar.'
+            });
+            return;
+        }
+
         setCrimes([...crimes, JSON.parse(crime)]);
         setCrime('');
     };
@@ -34,35 +62,38 @@ const Form = ({
     });
 
     return (
-        <form className="form">
-            <FormControl>
-                <InputLabel id="crimes">Crimes</InputLabel>
-                <Select
-                    labelId="crimes"
-                    id="crimes"
-                    value={crime}
-                    label="Crimes"
-                    onChange={handleChange}
+        <>
+            {Object.keys(alert).length > 0 && (<CustomAlert type={alert.type} message={alert.message} />)}
+            <form className="form">
+                <FormControl className="formControl">
+                    <InputLabel id="crimes">Crimes</InputLabel>
+                    <Select
+                        labelId="crimes"
+                        id="crimes"
+                        value={crime}
+                        label="Crimes"
+                        onChange={handleChange}
+                    >
+                        {availableCrimes.map(crime => (
+                            <MenuItem
+                                key={crime.crime}
+                                value={JSON.stringify(crime)}
+                            >
+                                {crime.crime}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+                <Button
+                    onClick={handleSubmit}
+                    color="primary"
+                    type="button"
+                    variant="contained"
                 >
-                    {availableCrimes.map(crime => (
-                        <MenuItem
-                            key={crime.crime}
-                            value={JSON.stringify(crime)}
-                        >
-                            {crime.crime}
-                        </MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
-            <Button
-                onClick={handleSubmit}
-                color="primary"
-                type="button"
-                variant="contained"
-            >
-                Adicionar
-            </Button>
-        </form>
+                    Adicionar
+                </Button>
+            </form>
+        </>
     )
 };
 
