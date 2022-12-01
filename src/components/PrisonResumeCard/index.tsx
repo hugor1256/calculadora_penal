@@ -35,12 +35,14 @@ const PrisonResumeCard = ({
     const [prisonersName, setPrisonersName] = useState<string>('');
     const [prisonersPassaport, setPrisonersPassaport] = useState<string>('');
 
+    const INITAL_TRAFFIC_TICKET = 20000;
+
     const handleExportPrisonersData = async () => {
         const textToDiscord = `
             Prisioneiro: ${prisonersName},
             Passaporte: ${prisonersPassaport},
-            Total da pena: ${resolveMonths()},
-            Total de multa: ${resolveTrafficTicket()!.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})},
+            Total da pena: ${resolveMonths()} meses,
+            Total de multa: ${(resolveTrafficTicket()! + INITAL_TRAFFIC_TICKET).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})},
             Prisão feita por:
             Policiais envolvidos:
         `;
@@ -49,10 +51,10 @@ const PrisonResumeCard = ({
     }
 
     const resolveTrafficTicket = (): number | undefined => {
-        const totalTrafficTicket = crimes.reduce((acumulador, numero) => acumulador + numero.trafficTicket, 0) || 20000;
+        const totalTrafficTicket = crimes.reduce((acumulador, numero) => acumulador + numero.trafficTicket, 0);
 
-        const discountCalulator = new DiscountCalculator();
-        return  discountCalulator.calculateDiscount(totalTrafficTicket, isFisrtOffender, confessed, colabored);
+        const  discountCalulator = new DiscountCalculator();
+        return discountCalulator.calculateDiscount(totalTrafficTicket, isFisrtOffender, confessed, colabored);
     }
 
     const resolveMonths = (): number => {
@@ -76,7 +78,7 @@ const PrisonResumeCard = ({
                         </Typography>
 
                         <Typography variant="h5">
-                            Total de multa: {resolveTrafficTicket()!.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
+                            Total de multa: {(resolveTrafficTicket()! + INITAL_TRAFFIC_TICKET).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
                         </Typography>
                     </CardContent>
 
