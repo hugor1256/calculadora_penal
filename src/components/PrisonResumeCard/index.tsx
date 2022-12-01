@@ -51,7 +51,7 @@ const PrisonResumeCard = ({
     }
 
     const resolveTrafficTicket = (): number | undefined => {
-        const totalTrafficTicket = crimes.reduce((acumulador, numero) => acumulador + numero.trafficTicket, 0);
+        const totalTrafficTicket = crimes.reduce((acumulador, numero) => acumulador + numero.trafficTicket, 0) + INITAL_TRAFFIC_TICKET;
 
         const  discountCalulator = new DiscountCalculator();
         return discountCalulator.calculateDiscount(totalTrafficTicket, isFisrtOffender, confessed, colabored);
@@ -78,7 +78,7 @@ const PrisonResumeCard = ({
                         </Typography>
 
                         <Typography variant="h5">
-                            Total de multa: {(resolveTrafficTicket()! + INITAL_TRAFFIC_TICKET).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
+                            Total de multa: {resolveTrafficTicket()!.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
                         </Typography>
                     </CardContent>
 
