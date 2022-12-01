@@ -114,7 +114,7 @@ const PrisonResumeCard = ({
                         margin="dense"
                         id="passaport"
                         label="Passaporte do réu"
-                        type="text"
+                        type="number"
                         fullWidth
                         variant="standard"
                         value={prisonersPassaport}
