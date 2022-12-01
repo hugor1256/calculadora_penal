@@ -12,6 +12,7 @@ const Main = () => {
     const [crimes, setCrimes] = useState<Crime[]>([]);
     const [isFisrtOffender, setIsFisrtOffender] = useState<boolean>(false);
     const [confessed, setConfessed] = useState<boolean>(false);
+    const [colabored, setColabored] = useState<boolean>(false);
 
     return (
         <main className="main">
@@ -27,12 +28,15 @@ const Main = () => {
                 isFisrtOffender={isFisrtOffender}
                 setConfessed={setConfessed}
                 confessed={confessed}
+                setColabored={setColabored}
+                colabored={colabored}
             />
 
             <PrisonResumeCard
                 isFisrtOffender={isFisrtOffender}
                 confessed={confessed}
                 crimes={crimes}
+                colabored={colabored}
             />
         </main>
     )

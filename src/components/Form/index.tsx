@@ -21,6 +21,8 @@ interface FormProps {
     isFisrtOffender: boolean
     setConfessed: Dispatch<SetStateAction<boolean>>
     confessed: boolean
+    setColabored: Dispatch<SetStateAction<boolean>>
+    colabored: boolean
 }
 
 interface AlertType {
@@ -35,7 +37,9 @@ const Form = ({
     setIsFisrtOffender,
     isFisrtOffender,
     setConfessed,
-    confessed
+    confessed,
+    setColabored,
+    colabored
 }: FormProps) => {
     const [crime, setCrime] = useState('');
     const [alert, setAlert] = useState({} as AlertType);
@@ -112,6 +116,11 @@ const Form = ({
                     <FormControlLabel
                         control={<Checkbox checked={confessed} onChange={() => setConfessed(!confessed)} />}
                         label="Confessou?(-30%)"
+                    />
+
+                    <FormControlLabel
+                        control={<Checkbox checked={colabored} onChange={() => setColabored(!colabored)} />}
+                        label="Colaborou?(-10%)"
                     />
                 </FormGroup>
             </form>
