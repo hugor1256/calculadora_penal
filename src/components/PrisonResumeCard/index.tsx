@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction, useState} from 'react';
+import React, { useState } from 'react';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -14,11 +14,9 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 import { Crime } from '../../interfaces/crime';
-
-import { applyDiscount } from '../../helper/applyDiscount';
+import { DiscountCalculator } from "../../DiscountsCalculator/DiscountCalculator";
 
 import './styles.css';
-import {DiscountCalculator} from "../../DiscountsCalculator/DiscountCalculator";
 
 interface FormProps {
     crimes: Crime[]
