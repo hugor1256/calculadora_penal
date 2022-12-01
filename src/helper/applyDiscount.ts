@@ -1,4 +1,5 @@
 export const applyDiscount = (percetange: number, value: number): number => {
-    const multiplier = percetange / 100;
-    return multiplier * value;
+    const discount = value * (percetange / 100);
+
+    return value - discount;
 }
