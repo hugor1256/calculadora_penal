@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -18,17 +18,20 @@ import { Crime } from '../../interfaces/crime';
 import { applyDiscount } from '../../helper/applyDiscount';
 
 import './styles.css';
+import {DiscountCalculator} from "../../DiscountsCalculator/DiscountCalculator";
 
 interface FormProps {
     crimes: Crime[]
     isFisrtOffender: boolean
     confessed: boolean
+    colabored: boolean
 }
 
 const PrisonResumeCard = ({
     crimes,
     isFisrtOffender,
-    confessed
+    confessed,
+    colabored
 }: FormProps) => {
     const [dioalogOpen, setDialogOpen] = useState<boolean>(false);
     const [prisonersName, setPrisonersName] = useState<string>('');
@@ -39,7 +42,7 @@ const PrisonResumeCard = ({
             Prisioneiro: ${prisonersName},
             Passaporte: ${prisonersPassaport},
             Total da pena: ${resolveMonths()},
-            Total de multa: ${resolveTrafficTicket().toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})},
+            Total de multa: ${resolveTrafficTicket()!.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})},
             Prisão feita por:
             Policiais envolvidos:
         `;
@@ -47,19 +50,11 @@ const PrisonResumeCard = ({
         await navigator.clipboard.writeText(textToDiscord);
     }
 
-    const resolveTrafficTicket = (): number => {
-        const initalTrafficTicket = 20000;
-        const totalTrafficTicket = crimes.reduce((acumulador, numero) => acumulador + numero.trafficTicket, 0);
+    const resolveTrafficTicket = (): number | undefined => {
+        const totalTrafficTicket = crimes.reduce((acumulador, numero) => acumulador + numero.trafficTicket, 0) || 20000;
 
-        if (isFisrtOffender && confessed) {
-            return totalTrafficTicket > 0 ? applyDiscount(60, totalTrafficTicket) : applyDiscount(60, initalTrafficTicket);
-        }
-
-        if (isFisrtOffender || confessed) {
-            return totalTrafficTicket > 0 ? applyDiscount(30, totalTrafficTicket) : applyDiscount(30, initalTrafficTicket);
-        }
-
-        return totalTrafficTicket > 0 ? totalTrafficTicket : initalTrafficTicket;
+        const discountCalulator = new DiscountCalculator();
+        return  discountCalulator.calculateDiscount(totalTrafficTicket, isFisrtOffender, confessed, colabored);
     }
 
     const resolveMonths = (): number => {
@@ -83,7 +78,7 @@ const PrisonResumeCard = ({
                         </Typography>
 
                         <Typography variant="h5">
-                            Total de multa: {resolveTrafficTicket().toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
+                            Total de multa: {resolveTrafficTicket()!.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
                         </Typography>
                     </CardContent>
 
