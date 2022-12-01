@@ -22,11 +22,13 @@ import './styles.css';
 interface FormProps {
     crimes: Crime[]
     isFisrtOffender: boolean
+    confessed: boolean
 }
 
 const PrisonResumeCard = ({
     crimes,
-    isFisrtOffender
+    isFisrtOffender,
+    confessed
 }: FormProps) => {
     const [dioalogOpen, setDialogOpen] = useState<boolean>(false);
     const [prisonersName, setPrisonersName] = useState<string>('');
@@ -49,7 +51,11 @@ const PrisonResumeCard = ({
         const initalTrafficTicket = 20000;
         const totalTrafficTicket = crimes.reduce((acumulador, numero) => acumulador + numero.trafficTicket, 0);
 
-        if (isFisrtOffender) {
+        if (isFisrtOffender && confessed) {
+            return totalTrafficTicket > 0 ? applyDiscount(60, totalTrafficTicket) : applyDiscount(60, initalTrafficTicket);
+        }
+
+        if (isFisrtOffender || confessed) {
             return totalTrafficTicket > 0 ? applyDiscount(30, totalTrafficTicket) : applyDiscount(30, initalTrafficTicket);
         }
 
