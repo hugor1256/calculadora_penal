@@ -24,7 +24,7 @@ const PrisonTable = ({
     const handleDeleteSingleItem = (crime:string) => setCrimes(crimes.filter(_crime => _crime.crime !== crime));
 
     return (
-        <TableContainer style={{marginTop: '20px'}} component={Paper}>
+        <TableContainer style={{marginTop: '20px', maxHeight: '300px'}} component={Paper}>
             <Table sx={{ minWidth: 650 }} size="small" aria-label="A table of crimes for GTA RP">
                 <TableHead>
                     <TableRow>
