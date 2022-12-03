@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -23,13 +23,21 @@ interface FormProps {
     isFisrtOffender: boolean
     confessed: boolean
     colabored: boolean
+    setCrimes: Dispatch<SetStateAction<Crime[]>>;
+    setIsFisrtOffender: Dispatch<SetStateAction<boolean>>;
+    setColabored: Dispatch<SetStateAction<boolean>>;
+    setConfessed: Dispatch<SetStateAction<boolean>>;
 }
 
 const PrisonResumeCard = ({
     crimes,
     isFisrtOffender,
     confessed,
-    colabored
+    colabored,
+    setCrimes,
+    setIsFisrtOffender,
+    setConfessed,
+    setColabored
 }: FormProps) => {
     const [dioalogOpen, setDialogOpen] = useState<boolean>(false);
     const [prisonersName, setPrisonersName] = useState<string>('');
@@ -38,7 +46,11 @@ const PrisonResumeCard = ({
     const INITAL_TRAFFIC_TICKET = 20000;
 
     const handleExportPrisonersData = async () => {
-        const textToDiscord = `
+        if (!prisonersName || !prisonersPassaport) {
+            return;
+        }
+
+        const textToClipboard = `
             Prisioneiro: ${prisonersName},
             Passaporte: ${prisonersPassaport},
             Total da pena: ${resolveMonths()} meses,
@@ -47,7 +59,17 @@ const PrisonResumeCard = ({
             Policiais envolvidos:
         `;
 
-        await navigator.clipboard.writeText(textToDiscord);
+        await navigator.clipboard.writeText(textToClipboard);
+
+        resetAll();
+    }
+
+    const resetAll = (): void => {
+        setColabored(false);
+        setConfessed(false);
+        setIsFisrtOffender(false);
+        setCrimes([]);
+        setDialogOpen(!dioalogOpen);
     }
 
     const resolveTrafficTicket = (): number | undefined => {

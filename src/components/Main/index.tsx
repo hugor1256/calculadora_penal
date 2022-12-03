@@ -37,6 +37,10 @@ const Main = () => {
                 confessed={confessed}
                 crimes={crimes}
                 colabored={colabored}
+                setCrimes={setCrimes}
+                setIsFisrtOffender={setIsFisrtOffender}
+                setColabored={setColabored}
+                setConfessed={setConfessed}
             />
         </main>
     )
