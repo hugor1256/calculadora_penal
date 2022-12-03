@@ -115,12 +115,12 @@ const Form = ({
 
                     <FormControlLabel
                         control={<Checkbox checked={confessed} onChange={() => setConfessed(!confessed)} />}
-                        label="Confessou?(-30%)"
+                        label="Confessou? (-30%)"
                     />
 
                     <FormControlLabel
                         control={<Checkbox checked={colabored} onChange={() => setColabored(!colabored)} />}
-                        label="Colaborou?(-10%)"
+                        label="Colaborou? (-10%)"
                     />
                 </FormGroup>
             </form>
