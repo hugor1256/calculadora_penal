@@ -9,6 +9,10 @@
     position: fixed;
 }
 
+.footer h5 a {
+    color: #000
+}
+
 .footer .links {
     margin: 0 auto;
 }

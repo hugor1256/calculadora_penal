@@ -8,7 +8,16 @@ import './styles.css';
 const Footer = () => {
     return (
         <footer className="footer">
-            <h5>Criado por &copy;Luiz Filipe da Silva de Jesus</h5>
+            <h5>
+                Criado por &copy;
+                <a
+                    rel="noreferrer"
+                    href="https://www.linkedin.com/in/luiz-filipe-da-silva-de-jesus-490a02182/"
+                    target="_blank"
+                >
+                    Luiz Filipe da Silva de Jesus
+                </a>
+            </h5>
             <div className="links">
                 <a
                     rel="noreferrer"
