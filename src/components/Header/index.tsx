@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import logo from '../../imgs/logo_city.png';
 
 const Header = () => (
-		<AppBar color="primary" position="static">
+		<AppBar role="banner" color="primary" position="static">
 			<Toolbar>
 				<Typography
 						variant="h5"
