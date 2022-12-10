@@ -18,7 +18,7 @@ import {DiscountCalculator} from "../../DiscountsCalculator/DiscountCalculator";
 
 import './styles.css';
 
-interface FormProps {
+interface PrisonResumeCardProps {
     crimes: Crime[]
     isFisrtOffender: boolean
     confessed: boolean
@@ -38,7 +38,7 @@ const PrisonResumeCard = ({
     setIsFisrtOffender,
     setConfessed,
     setColabored
-}: FormProps) => {
+}: PrisonResumeCardProps) => {
     const [dioalogOpen, setDialogOpen] = useState<boolean>(false);
     const [prisonersName, setPrisonersName] = useState<string>('');
     const [prisonersPassaport, setPrisonersPassaport] = useState<string>('');
