@@ -10,7 +10,7 @@ export class DiscountIsFirstOffenderAndConfessed extends Discount {
         colabored?: boolean
     ): number | undefined {
         if (isFisrtOffender && confessed) {
-            return applyDiscount(60, value);
+            return applyDiscount(80, value);
         }
 
         return this.nextDiscount?.calculateDiscount(value, isFisrtOffender, confessed, colabored);

@@ -110,7 +110,7 @@ const Form = ({
                 <FormGroup className="formGroupCheckbox">
                     <FormControlLabel
                         control={<Checkbox checked={isFisrtOffender} onChange={() => setIsFisrtOffender(!isFisrtOffender)} />}
-                        label="Réu primário? (-30%)"
+                        label="Réu primário? (-50%)"
                     />
 
                     <FormControlLabel
