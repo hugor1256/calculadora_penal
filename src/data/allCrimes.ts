@@ -51,13 +51,6 @@ export const allCrimes: Crime[] = [
         haveBail: false,
     },
     {
-        crime: 'DESOBEDIÊNCIA A AUTORIDADE',
-        type: 'CRIMINOSO',
-        months: 40,
-        trafficTicket: 15000,
-        haveBail: false,
-    },
-    {
         crime: 'ROUBO',
         type: 'CRIMINOSO',
         months: 50,
@@ -92,4 +85,32 @@ export const allCrimes: Crime[] = [
         trafficTicket: 50000,
         haveBail: false,
     },
+	{
+		crime: 'EXTORSÃO',
+		type: 'CRIMINOSO',
+		months: 30,
+		trafficTicket: 15000,
+		haveBail: false,
+	},
+	{
+		crime: 'ASSALTO Á RESIDÊNCIA',
+		type: 'ASSALTO',
+		months: 30,
+		trafficTicket: 10000,
+		haveBail: false,
+	},
+	{
+		crime: 'ASSALTO AO AMMUNATION',
+		type: 'ASSALTO',
+		months: 30,
+		trafficTicket: 15000,
+		haveBail: false,
+	},
+	{
+		crime: 'LATROCÍNIO',
+		type: 'ASSALTO',
+		months: 60,
+		trafficTicket: 50000,
+		haveBail: false,
+	}
 ];
