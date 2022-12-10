@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction, useState} from 'react';
+import React, {Dispatch, SetStateAction, useState, useEffect} from 'react';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -13,8 +13,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import {Crime} from '../../interfaces/crime';
-import {DiscountCalculator} from "../../DiscountsCalculator/DiscountCalculator";
+import { Crime } from '../../interfaces/crime';
+import { DiscountCalculator } from '../../DiscountsCalculator/DiscountCalculator';
+import CustomAlert from '../Alert';
 
 import './styles.css';
 
@@ -40,8 +41,17 @@ const PrisonResumeCard = ({
     setColabored
 }: PrisonResumeCardProps) => {
     const [dioalogOpen, setDialogOpen] = useState<boolean>(false);
+    const [showSuccessAlert, setShowSuccessAlert] = useState<boolean>(false);
     const [prisonersName, setPrisonersName] = useState<string>('');
     const [prisonersPassaport, setPrisonersPassaport] = useState<string>('');
+
+	useEffect(() => {
+		if (showSuccessAlert) {
+			setTimeout(() => {
+				setShowSuccessAlert(!showSuccessAlert)
+			}, 3000);
+		}
+	}, [showSuccessAlert]);
 
     const INITAL_TRAFFIC_TICKET = 20000;
 
@@ -61,6 +71,7 @@ const PrisonResumeCard = ({
 
         await navigator.clipboard.writeText(textToClipboard);
 
+		setShowSuccessAlert(!showSuccessAlert);
         resetAll();
     }
 
@@ -85,6 +96,7 @@ const PrisonResumeCard = ({
 
     return (
         <>
+			{showSuccessAlert && <CustomAlert message="Dados exportados com sucesso!" type="success" className="prisonResumeSuccessAlert"/>}
             <Box className="featherDescriptionCard" sx={{ minWidth: 275 }}>
                 <Card variant="outlined">
                     <CardContent>
