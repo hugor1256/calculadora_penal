@@ -13,8 +13,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import { Crime } from '../../interfaces/crime';
-import { DiscountCalculator } from "../../DiscountsCalculator/DiscountCalculator";
+import {Crime} from '../../interfaces/crime';
+import {DiscountCalculator} from "../../DiscountsCalculator/DiscountCalculator";
 
 import './styles.css';
 
@@ -79,12 +79,9 @@ const PrisonResumeCard = ({
         return discountCalulator.calculateDiscount(totalTrafficTicket, isFisrtOffender, confessed, colabored);
     }
 
-    const resolveMonths = (): number => {
-        const initalMonth = 0;
-        const totalMonths = crimes.reduce((acumulador, numero) => acumulador + numero.months, 0)
-
-        return totalMonths > 0 ? totalMonths : initalMonth;
-    }
+    const resolveMonths = (): number => crimes.reduce(
+			(acumulador, numero) => acumulador + numero.months, 0
+	);
 
     return (
         <>
