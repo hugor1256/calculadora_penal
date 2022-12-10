@@ -29,6 +29,20 @@ export const allCrimes: Crime[] = [
         trafficTicket: 15000,
         haveBail: false,
     },
+	{
+		crime: 'PORTE ILEGAL DE ARMAS LEVES - (PISTOLAS)',
+		type: 'GRAVE',
+		months: 30,
+		trafficTicket: 30000,
+		haveBail: false,
+	},
+	{
+		crime: 'PORTE ILEGAL DE ARMAS PESADAS - (FUZÍS)',
+		type: 'GRAVE',
+		months: 60,
+		trafficTicket: 60000,
+		haveBail: false,
+	},
     {
         crime: 'FUGA',
         type: 'CRIMINOSO',
