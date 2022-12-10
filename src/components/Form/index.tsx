@@ -48,7 +48,7 @@ const Form = ({
         if (Object.keys(alert).length > 0) {
             setTimeout(() => {
                 setAlert({} as AlertType);
-            }, 3000);
+            }, 4000);
         }
     }, [alert]);
 
@@ -76,7 +76,7 @@ const Form = ({
 
     return (
         <>
-            {Object.keys(alert).length > 0 && (<CustomAlert type={alert.type} message={alert.message} />)}
+            {Object.keys(alert).length > 0 && (<CustomAlert type={alert.type} message={alert.message} className="formAlertWarning" />)}
             <form className="form">
                 <FormControl className="formControl">
                     <InputLabel id="crimes">Crimes</InputLabel>

@@ -49,7 +49,7 @@ const PrisonResumeCard = ({
 		if (showSuccessAlert) {
 			setTimeout(() => {
 				setShowSuccessAlert(!showSuccessAlert)
-			}, 3000);
+			}, 4000);
 		}
 	}, [showSuccessAlert]);
 
