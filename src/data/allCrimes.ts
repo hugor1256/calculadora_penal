@@ -37,7 +37,7 @@ export const allCrimes: Crime[] = [
 		haveBail: false,
 	},
 	{
-		crime: 'PORTE ILEGAL DE ARMAS PESADAS - (FUZÍS)',
+		crime: 'PORTE ILEGAL DE ARMAS PESADAS - (FUZIS)',
 		type: 'GRAVE',
 		months: 60,
 		trafficTicket: 60000,
