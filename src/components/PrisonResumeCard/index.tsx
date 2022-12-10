@@ -116,7 +116,7 @@ const PrisonResumeCard = ({
                     <DialogContentText>
                         Ao cliar em "EXPORTAR DADOS", os dados do réu será copiado para sua
                         área de transferência. Cole essas informaçoes no e-mail da policia.
-                        Parabéns pela prisão, steve. A prefeitura agradece!
+                        Parabéns pela prisão, Steve. A prefeitura agradece!
                     </DialogContentText>
 
                     <TextField
