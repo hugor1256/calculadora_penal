@@ -32,6 +32,7 @@ const PrisonTable = ({
                         <TableCell>Tipo</TableCell>
                         <TableCell>Meses</TableCell>
                         <TableCell>Multa</TableCell>
+                        <TableCell>Fiança</TableCell>
                         <TableCell>Remover</TableCell>
                     </TableRow>
                 </TableHead>
@@ -56,6 +57,13 @@ const PrisonTable = ({
                                     )
                                 }
                             </TableCell>
+
+                            <TableCell>{crime.fianca.toLocaleString(
+                                        'pt-BR',
+                                        {style: 'currency', currency: 'BRL'}
+                                    )}
+                            </TableCell>
+
                             <TableCell>
                                 <DeleteIcon
                                     style={{cursor: "pointer"}}
@@ -63,6 +71,7 @@ const PrisonTable = ({
                                     color="error"
                                 />
                             </TableCell>
+                            
                         </TableRow>
                     ))}
                 </TableBody>

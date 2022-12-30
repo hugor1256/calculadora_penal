@@ -12,7 +12,7 @@ import { allCrimes } from '../../data/allCrimes';
 
 import './style.css';
 import CustomAlert from "../Alert";
-import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
+import {Checkbox, FormControlLabel, FormGroup, RadioGroup} from "@mui/material";
 
 interface FormProps {
     setCrimes: Dispatch<SetStateAction<Crime[]>>
@@ -74,6 +74,7 @@ const Form = ({
         return crimes.every(crime => allCrime.crime !== crime.crime);
     });
 
+
     return (
         <>
             {Object.keys(alert).length > 0 && (<CustomAlert type={alert.type} message={alert.message} className="formAlertWarning" />)}
@@ -123,8 +124,11 @@ const Form = ({
                         label="Colaborou? (-10%)"
                     />
                 </FormGroup>
+
             </form>
         </>
+
+        
     )
 };
 

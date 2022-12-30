@@ -4,8 +4,6 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-import logo from '../../imgs/logo_city.png';
-
 const Header = () => (
 		<AppBar role="banner" color="primary" position="static">
 			<Toolbar>
@@ -16,7 +14,7 @@ const Header = () => (
 				>
 					Calculadora Penal
 				</Typography>
-				<img width={50} src={logo}  alt="Logo da city"/>
+				<img width={50} alt="Logo da city"/>
 			</Toolbar>
 		</AppBar>
 );

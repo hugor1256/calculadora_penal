@@ -3,5 +3,6 @@ export interface Crime {
     type: string;
     months: number;
     trafficTicket: number;
+    fianca: number;
     haveBail: boolean;
 }

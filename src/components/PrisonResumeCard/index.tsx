@@ -65,6 +65,7 @@ const PrisonResumeCard = ({
             Passaporte: ${prisonersPassaport},
             Total da pena: ${resolveMonths()} meses,
             Total de multa: ${(resolveTrafficTicket()! + INITAL_TRAFFIC_TICKET).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})},
+            Valor da Fiança: ${(fianca()!).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})},
             Prisão feita por:
             Policiais envolvidos:
         `;
@@ -94,6 +95,13 @@ const PrisonResumeCard = ({
 			(acumulador, numero) => acumulador + numero.months, 0
 	);
 
+    const fianca = (): number | undefined => {
+        const totalFianca = crimes.reduce((acumulador, numero) => acumulador + numero.fianca, 0);
+
+        const  discountCalulator = new DiscountCalculator();
+        return discountCalulator.calculateDiscount(totalFianca, isFisrtOffender, confessed, colabored);
+    }
+
     return (
         <>
 			{showSuccessAlert && <CustomAlert message="Dados exportados com sucesso!" type="success" className="prisonResumeSuccessAlert"/>}
@@ -110,6 +118,10 @@ const PrisonResumeCard = ({
 
                         <Typography variant="h5">
                             Total de multa: {resolveTrafficTicket()!.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
+                        </Typography>
+
+                        <Typography variant="h5">
+                            Total de Fiança: {fianca()!.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
                         </Typography>
                     </CardContent>
 
