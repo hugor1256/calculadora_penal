@@ -50,7 +50,7 @@ export const allCrimes: Crime[] = [
         fianca: 400000
 	},
     {
-        crime: 'DINHERIO SUJO (+10K)',
+        crime: 'DINHEIRO SUJO (+10K)',
         type: 'ILEGAL',
         months: 10,
         trafficTicket: 25000,
@@ -58,7 +58,7 @@ export const allCrimes: Crime[] = [
         fianca: 50000
     },
 	{
-        crime: 'DINHERIO SUJO COM AGRAVO (+499K)',
+        crime: 'DINHEIRO SUJO COM AGRAVO (+499K)',
         type: 'ILEGAL',
         months: 60,
         trafficTicket: 200000,
