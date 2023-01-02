@@ -14,7 +14,6 @@ const Header = () => (
 				>
 					Calculadora Penal
 				</Typography>
-				<img width={50} alt="Logo da city"/>
 			</Toolbar>
 		</AppBar>
 );

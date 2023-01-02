@@ -10,5 +10,4 @@ test('should render header items', () => {
 
 	expect(banner).toHaveTextContent(/calculadora penal/i);
 	expect(logo).toBeInTheDocument();
-	expect(logo).toHaveAttribute("alt", "Logo da city");
 });
