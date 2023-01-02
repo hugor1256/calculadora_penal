@@ -9,6 +9,7 @@ export class WithoutDiscount extends Discount {
         value: number,
         isFisrtOffender?: boolean,
         advogado?: boolean,
+        delacao?: boolean,
         confessed?: boolean,
         colabored?: boolean
     ): number | undefined {

@@ -25,6 +25,8 @@ interface FormProps {
     colabored: boolean
     setAdvogado: Dispatch<SetStateAction<boolean>>
     advogado: boolean
+    setDelacao: Dispatch<SetStateAction<boolean>>
+    delacao: boolean
 }
 
 interface AlertType {
@@ -43,7 +45,9 @@ const Form = ({
     setColabored,
     colabored,
     setAdvogado,
-    advogado
+    advogado,
+    setDelacao,
+    delacao
 }: FormProps) => {
     const [crime, setCrime] = useState('');
     const [alert, setAlert] = useState({} as AlertType);
@@ -130,11 +134,15 @@ const Form = ({
 
                     <FormControlLabel
                         control={<Checkbox checked={advogado} onChange={() => setAdvogado(!advogado)} />}
-                        label=" Negociação com Advogado(-30%)"
+                        label=" Negociação com Advogado (-30%)"
                         className='WidthControll'
                     />
-                </FormGroup>
 
+                    <FormControlLabel
+                        control={<Checkbox checked={delacao} onChange={() => setDelacao(!delacao)} />}
+                        label=" Delação Premiada (-50%)"
+                    />
+                </FormGroup>
             </form>
         </>
 

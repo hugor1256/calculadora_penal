@@ -7,6 +7,7 @@ export class DiscountIsFirstOffenderAndConfessedAndColaboredAndAdvogado extends 
         value: number,
         isFisrtOffender?: boolean,
         advogado?: boolean,
+        delacao?: boolean,
         confessed?: boolean,
         colabored?: boolean
     ): number | undefined {
@@ -14,7 +15,7 @@ export class DiscountIsFirstOffenderAndConfessedAndColaboredAndAdvogado extends 
             return applyDiscount(60, value);
         }
 
-        return this.nextDiscount?.calculateDiscount(value, isFisrtOffender, advogado, confessed, colabored);
+        return this.nextDiscount?.calculateDiscount(value, isFisrtOffender, advogado, delacao, confessed, colabored);
     }
 
 }

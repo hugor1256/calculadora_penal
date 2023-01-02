@@ -14,6 +14,7 @@ const Main = () => {
     const [confessed, setConfessed] = useState<boolean>(false);
     const [colabored, setColabored] = useState<boolean>(false);
     const [advogado, setAdvogado] = useState<boolean>(false);
+    const [delacao, setDelacao] = useState<boolean>(false);
 
     return (
         <main className="main">
@@ -33,11 +34,14 @@ const Main = () => {
                 colabored={colabored}
                 advogado={advogado}
                 setAdvogado={setAdvogado}
+                delacao={delacao}
+                setDelacao={setDelacao}
             />
 
             <PrisonResumeCard
                 isFisrtOffender={isFisrtOffender}
                 advogado={advogado}
+                delacao={delacao}
                 confessed={confessed}
                 crimes={crimes}
                 colabored={colabored}
@@ -46,6 +50,7 @@ const Main = () => {
                 setColabored={setColabored}
                 setConfessed={setConfessed}
                 setAdvogado={setAdvogado}
+                setDelacao={setDelacao}
             />
         </main>
     )

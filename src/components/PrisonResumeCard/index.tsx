@@ -23,6 +23,7 @@ interface PrisonResumeCardProps {
     crimes: Crime[]
     isFisrtOffender: boolean
     advogado: boolean
+    delacao: boolean
     confessed: boolean
     colabored: boolean
     setCrimes: Dispatch<SetStateAction<Crime[]>>;
@@ -30,19 +31,22 @@ interface PrisonResumeCardProps {
     setColabored: Dispatch<SetStateAction<boolean>>;
     setConfessed: Dispatch<SetStateAction<boolean>>;
     setAdvogado: Dispatch<SetStateAction<boolean>>;
+    setDelacao: Dispatch<SetStateAction<boolean>>;
 }
 
 const PrisonResumeCard = ({
     crimes,
     isFisrtOffender,
     advogado,
+    delacao,
     confessed,
     colabored,
     setCrimes,
     setIsFisrtOffender,
     setAdvogado,
     setConfessed,
-    setColabored
+    setColabored,
+    setDelacao,
 }: PrisonResumeCardProps) => {
     const [dioalogOpen, setDialogOpen] = useState<boolean>(false);
     const [showSuccessAlert, setShowSuccessAlert] = useState<boolean>(false);
@@ -85,6 +89,7 @@ const PrisonResumeCard = ({
         setConfessed(false);
         setIsFisrtOffender(false);
         setAdvogado(false);
+        setDelacao(false);
         setCrimes([]);
         setDialogOpen(!dioalogOpen);
     }
@@ -93,7 +98,7 @@ const PrisonResumeCard = ({
         const totalTrafficTicket = crimes.reduce((acumulador, numero) => acumulador + numero.trafficTicket, 0) + INITAL_TRAFFIC_TICKET;
 
         const discountCalulator = new DiscountCalculator();
-        return discountCalulator.calculateDiscount(totalTrafficTicket, isFisrtOffender, advogado, confessed, colabored);
+        return discountCalulator.calculateDiscount(totalTrafficTicket, isFisrtOffender, advogado, delacao, confessed, colabored);
     }
 
     const resolveMonths = (): number => crimes.reduce(
@@ -104,7 +109,7 @@ const PrisonResumeCard = ({
         const totalFianca = crimes.reduce((acumulador, numero) => acumulador + numero.fianca, 0);
 
         const discountCalulator = new DiscountCalculator();
-        return discountCalulator.calculateDiscount(totalFianca, isFisrtOffender, advogado, confessed, colabored);
+        return discountCalulator.calculateDiscount(totalFianca, isFisrtOffender, advogado, delacao, confessed, colabored);
     }
 
     return (

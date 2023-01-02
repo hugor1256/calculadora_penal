@@ -24,12 +24,12 @@
 
 .form .formGroupCheckbox {
     margin-top: 20px;
-    display: grid;
+    display: felx;
     grid-template-columns: 200px 200px;
     gap: 20px;
     width: 300px;
 }
 
 .WidthControll{
-    width: 290px;
+    width: 310px;
 }

@@ -7,6 +7,7 @@ export class DiscountIsFirstOffender extends Discount {
         value: number,
         isFisrtOffender?: boolean,
         advogado?: boolean,
+        delacao?: boolean,
         confessed?: boolean,
         colabored?: boolean
     ): number | undefined {
@@ -18,6 +19,7 @@ export class DiscountIsFirstOffender extends Discount {
             value,
             isFisrtOffender,
             advogado,
+            delacao,
             confessed,
             colabored
         );
