@@ -98,7 +98,7 @@ const PrisonResumeCard = ({
         const totalTrafficTicket = crimes.reduce((acumulador, numero) => acumulador + numero.trafficTicket, 0) + INITAL_TRAFFIC_TICKET;
 
         const discountCalulator = new DiscountCalculator();
-        return discountCalulator.calculateDiscount(totalTrafficTicket, isFisrtOffender, advogado, delacao, confessed, colabored);
+        return discountCalulator.calculateDiscount(totalTrafficTicket);
     }
 
 
@@ -113,7 +113,7 @@ const PrisonResumeCard = ({
         const totalFianca = crimes.reduce((acumulador, numero) => acumulador + numero.fianca, 0);
 
         const discountCalulator = new DiscountCalculator();
-        return discountCalulator.calculateDiscount(totalFianca, isFisrtOffender, advogado, delacao, confessed, colabored);
+        return discountCalulator.calculateDiscount(totalFianca);
     }
 
     return (
