@@ -12,7 +12,8 @@ import { allCrimes } from '../../data/allCrimes';
 
 import './style.css';
 import CustomAlert from "../Alert";
-import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
+import { Checkbox, FormControlLabel, FormGroup, Typography } from "@mui/material";
+import { red } from '@mui/material/colors';
 
 interface FormProps {
     setCrimes: Dispatch<SetStateAction<Crime[]>>

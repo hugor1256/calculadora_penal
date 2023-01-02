@@ -17,10 +17,6 @@ import { DiscountAdvogadoAndConfessed } from './discounts/DiscountAdvogadoAndCon
 import { DiscountAdvogadoAndColabored } from './discounts/DiscountAdvogadoAndColabored';
 import { DiscountIsFirstOffenderAndConfessedAndAdvogado } from './discounts/DiscountIsFirstOffenderAndConfessedAndAdvogado';
 import { DiscountConfessedAndColaboredAndAdvogado } from './discounts/DiscountConfessedAndColaboredAndAdvogado';
-import { DiscountIsFirstOffenderAndDelacao } from './discounts/DiscountIsFirstOffenderAndDelacao';
-import { DiscountConfessedAndDelacao } from './discounts/DiscountConfessedAndDelacao';
-import { DiscountDelacaoAndColabored } from './discounts/DiscountDelacaoAndColabored';
-import { DiscountAdvogadoAndDelacao } from './discounts/DiscountAdvogadoAndDelacao';
 
 export class DiscountCalculator {
     calculateDiscount(
@@ -33,29 +29,22 @@ export class DiscountCalculator {
     ): number | undefined {
         const discountChain =
             new DiscountIsFirstOffenderAndConfessedAndColaboredAndAdvogado(
-                new DiscountIsFirstOffenderAndColaboredAndAdvogado(
-                    new DiscountIsFirstOffenderAndConfessedAndColabored(
+                new DiscountIsFirstOffenderAndConfessedAndColabored(
+                    new DiscountIsFirstOffenderAndColaboredAndAdvogado(
                         new DiscountIsFirstOffenderAndColabored(
                             new DiscountConfessedAndColaboredAndAdvogado(
                                 new DiscountIsFirstOffenderAndConfessedAndAdvogado(
                                     new DiscountIsFirstOffenderAndConfessed(
-                                        new DiscountIsFirstOffenderAndDelacao(
                                             new DiscountConfessedAndColabored(
                                                 new DiscountIsFirstOffenderAndAdvogado(
                                                     new DiscountAdvogadoAndConfessed(
-                                                        new DiscountAdvogadoAndDelacao(
-                                                            new DiscountDelacaoAndColabored(
-                                                                new DiscountConfessedAndDelacao(
-                                                                    new DiscountAdvogadoAndColabored(
-                                                                        new DiscountColabored(
-                                                                            new DiscountAdvogado(
-                                                                                new DiscountDelacao(
-                                                                                    new DiscountIsFirstOffender(
-                                                                                        new DiscountConfessed(
-                                                                                            new WithoutDiscount()
-                                                                                        )
-                                                                                    )
-                                                                                )
+                                                        new DiscountAdvogadoAndColabored(
+                                                            new DiscountColabored(
+                                                                new DiscountAdvogado(
+                                                                    new DiscountDelacao(
+                                                                        new DiscountIsFirstOffender(
+                                                                            new DiscountConfessed(
+                                                                                new WithoutDiscount()
                                                                             )
                                                                         )
                                                                     )
@@ -65,15 +54,18 @@ export class DiscountCalculator {
                                                     )
                                                 )
                                             )
-                                        )
+                                        
                                     )
                                 )
                             )
                         )
 
 
-                    )
+                    
                 )
+                )
+
+                
             )
 
         return discountChain.calculateDiscount(

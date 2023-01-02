@@ -101,9 +101,13 @@ const PrisonResumeCard = ({
         return discountCalulator.calculateDiscount(totalTrafficTicket, isFisrtOffender, advogado, delacao, confessed, colabored);
     }
 
-    const resolveMonths = (): number => crimes.reduce(
-        (acumulador, numero) => acumulador + numero.months, 0
-    );
+
+    const resolveMonths = (): number | undefined => {
+        const totalMonths = crimes.reduce((acumulador, numero) => acumulador + numero.months, 0);
+
+        const discountCalulator = new DiscountCalculator();
+        return discountCalulator.calculateDiscount(totalMonths, isFisrtOffender, advogado, delacao, confessed, colabored);
+    }
 
     const fianca = (): number | undefined => {
         const totalFianca = crimes.reduce((acumulador, numero) => acumulador + numero.fianca, 0);
@@ -118,26 +122,46 @@ const PrisonResumeCard = ({
             <Box className="featherDescriptionCard" sx={{ minWidth: 275 }}>
                 <Card variant="outlined">
                     <CardContent>
-                        <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
-                            Resumo da prisão
-                        </Typography>
-
+                        <div className='Width'>
+                            <div className='Underline'>
+                                <Typography sx={{ fontSize: 20}} fontFamily="fantasy" gutterBottom>
+                                Resumo da prisão
+                                </Typography>
+                            </div>
+                                
+                        </div>
+                    <div className='totalPena'>
                         <Typography variant="h5" component="div">
                             Tempo total da pena: {resolveMonths()} meses
                         </Typography>
-
+                    </div>
+                    <div className='totalMulta'>
                         <Typography variant="h5">
                             Total de multa: {resolveTrafficTicket()!.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                         </Typography>
-
+                    </div>
+                    <div className='totalFianca'>
                         <Typography variant="h5">
                             Total de Fiança: {fianca()!.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                         </Typography>
+                    </div>
+                    <div className='Reducao'>
+                        <Typography sx={{ fontSize: 16, color: "#FF0000;" }} fontFamily="fantasy" gutterBottom>
+                                OBS: REDUÇÃO MAXIMA DA PENA = 50%
+                        </Typography>
+                    </div>
+                       
+                                
                     </CardContent>
-
+                <div className='ExportDados'>
                     <CardActions>
                         <Button onClick={() => setDialogOpen(!dioalogOpen)} size="small">Exportar dados</Button>
                     </CardActions>
+                </div>
+                   
+
+                   
+
                 </Card>
             </Box>
 
