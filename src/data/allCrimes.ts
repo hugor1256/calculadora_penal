@@ -83,7 +83,7 @@ export const allCrimes: Crime[] = [
     },
     {
         crime: 'FALSA COMUNICAÇÃO DE CRIME',
-        type: '',
+        type: 'INFRAÇÕES/CRIMES MENORES',
         months: 20,
         trafficTicket: 50000,
         haveBail: false,
