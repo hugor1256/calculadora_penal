@@ -3,7 +3,7 @@ import { Crime } from '../interfaces/crime';
 export const allCrimes: Crime[] = [
     {
         crime: 'ABUSO DE AUTORIDADE',
-        type: '',
+        type: 'INFRAÇÕES/CRIMES MENORES',
         months: 20,
         trafficTicket: 50000,
         haveBail: true,
@@ -11,15 +11,15 @@ export const allCrimes: Crime[] = [
     },
     {
         crime: 'ALTA VELOCIDADE',
-        type: '',
+        type: 'TRANSITO',
         months: 0,
         trafficTicket: 10000,
         haveBail: true,
-        fianca: 20000
+        fianca: 0
     },
     {
         crime: 'ASSOCIAÇÃO AO TRAFICO',
-        type: '',
+        type: 'NARCOTRAFICO',
         months: 40,
         trafficTicket: 100000,
         haveBail: true,
@@ -27,7 +27,7 @@ export const allCrimes: Crime[] = [
     },
     {
         crime: 'ATRAPALHAR RECRUTAMENTO',
-        type: ' ',
+        type: 'ORDEM PUBLICA',
         months: 100,
         trafficTicket: 100000,
         haveBail: false,
@@ -35,7 +35,7 @@ export const allCrimes: Crime[] = [
     },
 	{
 		crime: 'CONDUÇÃO INPRUDENTE',
-		type: '',
+		type: 'TRANSITO',
 		months: 0,
 		trafficTicket: 10000,
 		haveBail: false,
@@ -43,23 +43,31 @@ export const allCrimes: Crime[] = [
 	},
 	{
 		crime:'CORRIDAS ILEGAIS',
-		type: ' ',
+		type: 'TRANSITO',
 		months: 60,
 		trafficTicket: 50000,
 		haveBail: false,
         fianca: 400000
 	},
     {
-        crime: 'DINHERIO SUJO',
-        type: '',
-        months: 20,
-        trafficTicket: 50000,
+        crime: 'DINHERIO SUJO (+10K)',
+        type: 'ILEGAL',
+        months: 10,
+        trafficTicket: 25000,
         haveBail: false,
-        fianca: 100000
+        fianca: 50000
+    },
+	{
+        crime: 'DINHERIO SUJO COM AGRAVO (+499K)',
+        type: 'ILEGAL',
+        months: 60,
+        trafficTicket: 200000,
+        haveBail: false,
+        fianca: 1000000
     },
     {
         crime: 'DIRIGIR NA CONTRA MÃO',
-        type: '',
+        type: 'TRANSITO',
         months: 0,
         trafficTicket: 10000,
         haveBail: false,
@@ -67,7 +75,7 @@ export const allCrimes: Crime[] = [
     },
     {
         crime: 'EXTORSAO',
-        type: '',
+        type: 'ROUBOS E EXTORÇÃO',
         months: 40,
         trafficTicket: 50000,
         haveBail: false,
@@ -83,15 +91,15 @@ export const allCrimes: Crime[] = [
     },
     {
         crime: 'FALSIDADE IDEOLOGICA',
-        type: ' ',
-        months: 5,
-        trafficTicket: 10000,
+        type: 'ALEATORIOS/OUTROS',
+        months: 30,
+        trafficTicket: 200000,
         haveBail: false,
-        fianca: 20000
+        fianca: 400000
     },
     {
-        crime: 'FORMAÇÃO DE QUADRILHA',
-        type: ' ',
+        crime: 'FORMAÇÃO DE QUADRILHA (+4)',
+        type: 'ALEATORIOS/OUTROS',
         months: 50,
         trafficTicket: 100000,
         haveBail: false,
@@ -99,23 +107,23 @@ export const allCrimes: Crime[] = [
     },
     {
         crime: 'FUGA' ,
-        type: ' ',
-        months: 30,
+        type: 'INFRAÇÕES/CRIMES MENORES',
+        months: 40,
         trafficTicket: 40000,
-        haveBail: false,
-        fianca: 80000
-    },
-    {
-        crime: 'FURTO' ,
-        type: ' ',
-        months: 30,
-        trafficTicket: 50000,
         haveBail: false,
         fianca: 100000
     },
+    {
+        crime: 'FURTO' ,
+        type: 'CONTRA O PATRIMONIO',
+        months: 30,
+        trafficTicket: 50000,
+        haveBail: false,
+        fianca: 150000
+    },
 	{
 		crime: 'LESAO CORPORAL',
-		type: ' ',
+		type: 'VIOLENTOS',
 		months: 40,
 		trafficTicket: 50000,
 		haveBail: false,
@@ -123,7 +131,7 @@ export const allCrimes: Crime[] = [
 	},
 	{
 		crime: 'OBSTRUÇÃO DE JUSTIÇA',
-		type: ' ',
+		type: 'INFRAÇÕES/CRIMES MENORES',
 		months: 20,
 		trafficTicket: 50000,
 		haveBail: false,
@@ -131,7 +139,7 @@ export const allCrimes: Crime[] = [
 	},
 	{
 		crime: 'OCULTAÇÃO FACIAL' ,
-		type: ' ',
+		type: 'INFRAÇÕES/CRIMES MENORES',
 		months: 10,
 		trafficTicket: 10000,
 		haveBail: false,
@@ -139,7 +147,7 @@ export const allCrimes: Crime[] = [
 	},
 	{
 		crime: 'OMISSAO DE SOCORRO',
-		type: ' ',
+		type: 'INFRAÇÕES/CRIMES MENORES',
 		months: 10,
 		trafficTicket: 10000,
 		haveBail: false,
@@ -147,15 +155,15 @@ export const allCrimes: Crime[] = [
 	},
     {
 		crime: 'PERTURBAÇÃO DA ORDEM' ,
-		type: ' ',
-		months: 1,
+		type: 'INFRAÇÕES/CRIMES MENORES',
+		months: 10,
 		trafficTicket: 10000,
 		haveBail: false,
         fianca: 20000
 	},
     {
 		crime: 'POLUIÇÃO SONORA' ,
-		type: ' ',
+		type: 'TRANSITO',
 		months: 10,
 		trafficTicket: 10000,
 		haveBail: false,
@@ -163,15 +171,15 @@ export const allCrimes: Crime[] = [
 	},
     {
 		crime: 'PORTE DE ARMA LEVE' ,
-		type: ' ',
+		type: 'ARMAS E ITENS ILEGAIS',
 		months: 30,
 		trafficTicket: 100000,
 		haveBail: false,
         fianca: 200000
 	},
     {
-		crime: 'PORTE DE ARMA PESADA' ,
-		type: ' ',
+		crime: 'PORTE DE ARMA PESADA (INAFIANÇAVEL)' ,
+		type: 'ARMAS E ITENS ILEGAIS',
 		months: 50,
 		trafficTicket: 200000,
 		haveBail: false,
@@ -179,7 +187,7 @@ export const allCrimes: Crime[] = [
 	},
     {
 		crime: 'POSSE DE CAPSULA' ,
-		type: '',
+		type: 'ARMAS E ITENS ILEGAIS',
 		months: 10,
 		trafficTicket: 50000,
 		haveBail: false,
@@ -187,23 +195,23 @@ export const allCrimes: Crime[] = [
 	},
     {
 		crime: 'POSSE DE COMPONENTES NARCÓTICOS' ,
-		type: '',
+		type: 'NARCOTRAFICO',
 		months: 20,
 		trafficTicket: 50000,
 		haveBail: false,
         fianca: 100000
 	},
     {
-		crime: 'POSSE DE DROGAS(AJUSTE)' ,
-		type: '',
-		months: 1,
-		trafficTicket: 1,
+		crime: 'POSSE DE DROGAS (+5)' ,
+		type: 'ILEGAL',
+		months: 30,
+		trafficTicket: 100000,
 		haveBail: false,
-        fianca: 0
+        fianca: 500000
 	},
     {
 		crime: 'POSSE DE ITENS ILEGAIS' ,
-		type: ' ',
+		type: 'INFRAÇÕES/CRIMES MENORES',
 		months: 20,
 		trafficTicket: 50000,
 		haveBail: false,
@@ -211,7 +219,7 @@ export const allCrimes: Crime[] = [
 	},
     {
 		crime: 'POSSE DE PEÇAS DE ARMA' ,
-		type: ' ',
+		type: 'ARMAS E ITENS ILEGAIS',
 		months: 10,
 		trafficTicket: 50000,
 		haveBail: false,
@@ -219,15 +227,23 @@ export const allCrimes: Crime[] = [
 	},
     {
 		crime: 'QRR ILEGAL' ,
-		type: ' ',
+		type: 'ORDEM PUBLICA',
 		months: 20,
-		trafficTicket: 10000,
+		trafficTicket: 50000,
 		haveBail: false,
-        fianca: 20000
+        fianca: 100000
+	},
+	{
+		crime: 'CORRUPÇÃO PASSIVEL (INAFIANÇAVEL)' ,
+		type: 'ORDEM PUBLICA',
+		months: 300,
+		trafficTicket: 500000,
+		haveBail: false,
+        fianca: 0
 	},
     {
 		crime: 'RECEPTAÇÃO DE VEICULOS' ,
-		type: ' ',
+		type: 'ILEGAL',
 		months: 30,
 		trafficTicket: 50000,
 		haveBail: false,
@@ -235,63 +251,63 @@ export const allCrimes: Crime[] = [
 	},
     {
 		crime: 'ROUBO' ,
-		type: ' ',
-		months: 30,
-		trafficTicket: 50000,
+		type: 'ROUBOS E EXTORÇÃO',
+		months: 60,
+		trafficTicket: 100000,
 		haveBail: false,
-        fianca: 100000
+        fianca: 200000
 	},
     {
 		crime: 'ROUBO DE CAIXA' ,
-		type: ' ',
+		type: 'ROUBOS E EXTORÇÃO',
 		months: 60,
 		trafficTicket: 50000,
 		haveBail: false,
         fianca: 100000
 	},
     {
-		crime: 'SUBORNO' ,
-		type: '',
-		months: 20,
-		trafficTicket: 50000,
+		crime: 'SUBORNO (INAFIANÇAVEL)' ,
+		type: 'INFRAÇÕES/CRIMES MENORES',
+		months: 60,
+		trafficTicket: 100000,
 		haveBail: false,
         fianca: 100000
 	},
     {
 		crime: 'TRAFICO DE ARMAS' ,
-		type: ' ',
+		type: 'ILEGAL',
 		months: 70,
 		trafficTicket: 200000,
 		haveBail: false,
-        fianca: 1000000
+        fianca: 1500000
 	},
     {
-		crime: 'TRAFICO DE DROGAS' ,
-		type: '',
+		crime: 'TRAFICO DE DROGAS(+30)' ,
+		type: 'NARCOTRAFICO',
 		months: 60,
 		trafficTicket: 200000,
 		haveBail: false,
-        fianca: 1000000
+        fianca: 1500000
 	},
     {
 		crime: 'TRAFICO DE INFLUÊNCIA' ,
-		type: '',
+		type: 'INFRAÇÕES/CRIMES MENORES',
 		months: 10,
 		trafficTicket: 50000,
 		haveBail: false,
         fianca: 100000
 	},
     {
-		crime: 'TRAFICO DE MUNIÇÃO (+199)' ,
-		type: '',
-		months: 60,
-		trafficTicket: 250000,
+		crime: 'TRAFICO DE MUNIÇÃO (+50)' ,
+		type: 'ILEGAL',
+		months: 20,
+		trafficTicket: 200000,
 		haveBail: false,
-        fianca: 100000
+        fianca: 350000
 	},
     {
 		crime: 'USO EXCESSIVO DE INSUFILM' ,
-		type: '',
+		type: 'TRANSITO',
 		months: 0,
 		trafficTicket: 10000,
 		haveBail: false,
@@ -299,7 +315,7 @@ export const allCrimes: Crime[] = [
 	},
     {
 		crime: 'USO INDEVIDO DE 190/02' ,
-		type: '',
+		type: 'INFRAÇÕES/CRIMES MENORES',
 		months: 20,
 		trafficTicket: 50000,
 		haveBail: false,
@@ -307,7 +323,7 @@ export const allCrimes: Crime[] = [
 	},
     {
 		crime: 'VANDALISMO' ,
-		type: '',
+		type: 'INFRAÇÕES/CRIMES MENORES',
 		months: 20,
 		trafficTicket: 50000,
 		haveBail: false,
@@ -315,84 +331,84 @@ export const allCrimes: Crime[] = [
 	},
     {
 		crime: 'VANDALISMO DE PROPRIEDADE DO GOVERNO' ,
-		type: '',
+		type: 'INFRAÇÕES/CRIMES MENORES',
 		months: 20,
 		trafficTicket: 100000,
 		haveBail: false,
         fianca: 1000000
 	},
-    {
-		crime: 'VEICULO ILEGALMENTE ESTACIONADO' ,
-		type: '',
-		months: 0,
-		trafficTicket: 0,
+	{
+		crime: 'OCULTAÇÃO DE PROVAS' ,
+		type: 'INFRAÇÕES/CRIMES MENORES',
+		months: 40,
+		trafficTicket: 100000,
 		haveBail: false,
-        fianca: 0
+        fianca: 200000
 	},
     {
 		crime: 'VEICULO MUITO DANIFICADO' ,
-		type: '',
+		type: 'TRANSITO',
 		months: 0,
 		trafficTicket: 25000,
 		haveBail: false,
         fianca: 0
 	},
     {
-		crime: 'DESACATO' ,
-		type: '',
-		months: 10,
+		crime: 'DESACATO (INAFIANÇAVEL)' ,
+		type: 'ORDEM PUBLICA',
+		months: 30,
 		trafficTicket: 100000,
 		haveBail: false,
         fianca: 0
 	},
     {
 		crime: 'HOMICIDIO DOLOSO QUALIFICADO' ,
-		type: '',
+		type: 'CONTRA A VIDA',
 		months: 100,
 		trafficTicket: 100000,
 		haveBail: false,
         fianca: 0
 	},
     {
-		crime: 'HOMICIDIO FUNCIONARIO PUBLICO' ,
-		type: '',
+		crime: 'HOMICIDIO FUNCIONARIO PUBLICO (INAFIANÇAVEL)' ,
+		type: 'CONTRA A VIDA',
 		months: 150,
 		trafficTicket: 300000,
 		haveBail: false,
         fianca: 0
 	},
     {
-		crime: 'PRISAO MILITAR' ,
-		type: '',
+		crime: 'PRISAO MILITAR (INAFIANÇAVEL)' ,
+		type: 'ORDEM PUBLICA',
 		months: 100,
 		trafficTicket: 0,
 		haveBail: false,
         fianca: 0
 	},
     {
-		crime: 'PREVARICAÇÃO' ,
-		type: '',
+		crime: 'PREVARICAÇÃO (INAFIANÇAVEL)' ,
+		type: 'ORDEM PUBLICA',
 		months: 100,
 		trafficTicket: 0,
 		haveBail: false,
         fianca: 0
 	},
     {
-		crime: 'SEQUESTRO' ,
-		type: '',
-		months: 200000,
-		trafficTicket: 50,
+		crime: 'SEQUESTRO (INAFIANÇAVEL)' ,
+		type: 'VIOLENTOS',
+		months: 50,
+		trafficTicket: 200000,
 		haveBail: false,
         fianca: 0
 	},
     {
-		crime: 'TENTATIVA DE OMICIDIO' ,
-		type: '',
-		months: 100000,
-		trafficTicket: 40,
+		crime: 'TENTATIVA DE OMICIDIO (INAFIANÇAVEL)',
+		type: 'CONTRA A VIDA',
+		months: 40,
+		trafficTicket: 100000,
 		haveBail: false,
         fianca: 0
 	},
 
     
-];
+].sort((a, b) => (a.crime > b.crime) ? 1 : -1)
