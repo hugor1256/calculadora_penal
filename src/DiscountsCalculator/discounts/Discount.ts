@@ -1,5 +1,5 @@
 export abstract class Discount {
-     nextDiscount?: Discount;
+    nextDiscount?: Discount;
 
     constructor(nextDiscount?: Discount) {
         this.nextDiscount = nextDiscount;
@@ -8,6 +8,7 @@ export abstract class Discount {
     abstract calculateDiscount(
         value: number,
         isFisrtOffender?: boolean,
+        advogado?: boolean,
         confessed?: boolean,
         colabored?: boolean
     ): number | undefined

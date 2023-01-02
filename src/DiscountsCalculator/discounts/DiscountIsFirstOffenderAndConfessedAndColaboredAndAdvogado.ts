@@ -2,7 +2,7 @@ import { Discount } from './Discount';
 
 import { applyDiscount } from '../../helper/applyDiscount';
 
-export class DiscountIsFirstOffender extends Discount {
+export class DiscountIsFirstOffenderAndConfessedAndColaboredAndAdvogado extends Discount {
     calculateDiscount(
         value: number,
         isFisrtOffender?: boolean,
@@ -10,17 +10,11 @@ export class DiscountIsFirstOffender extends Discount {
         confessed?: boolean,
         colabored?: boolean
     ): number | undefined {
-        if (isFisrtOffender) {
-            return applyDiscount(10, value);
+        if (isFisrtOffender && confessed && colabored && advogado) {
+            return applyDiscount(60, value);
         }
 
-        return this.nextDiscount?.calculateDiscount(
-            value,
-            isFisrtOffender,
-            advogado,
-            confessed,
-            colabored
-        );
+        return this.nextDiscount?.calculateDiscount(value, isFisrtOffender, advogado, confessed, colabored);
     }
 
 }

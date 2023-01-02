@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import PrisonTable from '../Table';
 import Form from '../Form';
@@ -13,6 +13,7 @@ const Main = () => {
     const [isFisrtOffender, setIsFisrtOffender] = useState<boolean>(false);
     const [confessed, setConfessed] = useState<boolean>(false);
     const [colabored, setColabored] = useState<boolean>(false);
+    const [advogado, setAdvogado] = useState<boolean>(false);
 
     return (
         <main className="main">
@@ -30,10 +31,13 @@ const Main = () => {
                 confessed={confessed}
                 setColabored={setColabored}
                 colabored={colabored}
+                advogado={advogado}
+                setAdvogado={setAdvogado}
             />
 
             <PrisonResumeCard
                 isFisrtOffender={isFisrtOffender}
+                advogado={advogado}
                 confessed={confessed}
                 crimes={crimes}
                 colabored={colabored}
@@ -41,6 +45,7 @@ const Main = () => {
                 setIsFisrtOffender={setIsFisrtOffender}
                 setColabored={setColabored}
                 setConfessed={setConfessed}
+                setAdvogado={setAdvogado}
             />
         </main>
     )

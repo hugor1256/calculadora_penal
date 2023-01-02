@@ -6,16 +6,18 @@ export class DiscountConfessed extends Discount {
     calculateDiscount(
         value: number,
         isFisrtOffender?: boolean,
+        advogado?: boolean,
         confessed?: boolean,
         colabored?: boolean
     ): number | undefined {
         if (confessed) {
-            return applyDiscount(30, value);
+            return applyDiscount(10, value);
         }
 
         return this.nextDiscount?.calculateDiscount(
             value,
             isFisrtOffender,
+            advogado,
             confessed,
             colabored
         );

@@ -6,6 +6,7 @@ export class DiscountColabored extends Discount {
     calculateDiscount(
         value: number,
         isFisrtOffender?: boolean,
+        advogado?: boolean,
         confessed?: boolean,
         colabored?: boolean
     ): number | undefined {
@@ -16,6 +17,7 @@ export class DiscountColabored extends Discount {
         return this.nextDiscount?.calculateDiscount(
             value,
             isFisrtOffender,
+            advogado,
             confessed,
             colabored
         );

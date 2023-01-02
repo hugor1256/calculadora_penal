@@ -1,4 +1,4 @@
-import React,  {Dispatch, SetStateAction, useState, useEffect } from 'react';
+import React, { Dispatch, SetStateAction, useState, useEffect } from 'react';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,7 +12,7 @@ import { allCrimes } from '../../data/allCrimes';
 
 import './style.css';
 import CustomAlert from "../Alert";
-import {Checkbox, FormControlLabel, FormGroup, RadioGroup} from "@mui/material";
+import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 
 interface FormProps {
     setCrimes: Dispatch<SetStateAction<Crime[]>>
@@ -23,6 +23,8 @@ interface FormProps {
     confessed: boolean
     setColabored: Dispatch<SetStateAction<boolean>>
     colabored: boolean
+    setAdvogado: Dispatch<SetStateAction<boolean>>
+    advogado: boolean
 }
 
 interface AlertType {
@@ -39,7 +41,9 @@ const Form = ({
     setConfessed,
     confessed,
     setColabored,
-    colabored
+    colabored,
+    setAdvogado,
+    advogado
 }: FormProps) => {
     const [crime, setCrime] = useState('');
     const [alert, setAlert] = useState({} as AlertType);
@@ -111,24 +115,30 @@ const Form = ({
                 <FormGroup className="formGroupCheckbox">
                     <FormControlLabel
                         control={<Checkbox checked={isFisrtOffender} onChange={() => setIsFisrtOffender(!isFisrtOffender)} />}
-                        label="Réu primário? (-50%)"
+                        label="Réu primário? (-10%)"
                     />
 
                     <FormControlLabel
                         control={<Checkbox checked={confessed} onChange={() => setConfessed(!confessed)} />}
-                        label="Confessou? (-30%)"
+                        label="Confessou? (-10%)"
                     />
 
                     <FormControlLabel
                         control={<Checkbox checked={colabored} onChange={() => setColabored(!colabored)} />}
                         label="Colaborou? (-10%)"
                     />
+
+                    <FormControlLabel
+                        control={<Checkbox checked={advogado} onChange={() => setAdvogado(!advogado)} />}
+                        label=" Negociação com Advogado(-30%)"
+                        className='WidthControll'
+                    />
                 </FormGroup>
 
             </form>
         </>
 
-        
+
     )
 };
 

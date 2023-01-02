@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction, useState, useEffect} from 'react';
+import React, { Dispatch, SetStateAction, useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -22,21 +22,25 @@ import './styles.css';
 interface PrisonResumeCardProps {
     crimes: Crime[]
     isFisrtOffender: boolean
+    advogado: boolean
     confessed: boolean
     colabored: boolean
     setCrimes: Dispatch<SetStateAction<Crime[]>>;
     setIsFisrtOffender: Dispatch<SetStateAction<boolean>>;
     setColabored: Dispatch<SetStateAction<boolean>>;
     setConfessed: Dispatch<SetStateAction<boolean>>;
+    setAdvogado: Dispatch<SetStateAction<boolean>>;
 }
 
 const PrisonResumeCard = ({
     crimes,
     isFisrtOffender,
+    advogado,
     confessed,
     colabored,
     setCrimes,
     setIsFisrtOffender,
+    setAdvogado,
     setConfessed,
     setColabored
 }: PrisonResumeCardProps) => {
@@ -45,13 +49,13 @@ const PrisonResumeCard = ({
     const [prisonersName, setPrisonersName] = useState<string>('');
     const [prisonersPassaport, setPrisonersPassaport] = useState<string>('');
 
-	useEffect(() => {
-		if (showSuccessAlert) {
-			setTimeout(() => {
-				setShowSuccessAlert(!showSuccessAlert)
-			}, 4000);
-		}
-	}, [showSuccessAlert]);
+    useEffect(() => {
+        if (showSuccessAlert) {
+            setTimeout(() => {
+                setShowSuccessAlert(!showSuccessAlert)
+            }, 4000);
+        }
+    }, [showSuccessAlert]);
 
     const INITAL_TRAFFIC_TICKET = 20000;
 
@@ -64,15 +68,15 @@ const PrisonResumeCard = ({
             Prisioneiro: ${prisonersName},
             Passaporte: ${prisonersPassaport},
             Total da pena: ${resolveMonths()} meses,
-            Total de multa: ${(resolveTrafficTicket()! + INITAL_TRAFFIC_TICKET).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})},
-            Valor da Fiança: ${(fianca()!).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})},
+            Total de multa: ${(resolveTrafficTicket()! + INITAL_TRAFFIC_TICKET).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
+            Valor da Fiança: ${(fianca()!).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
             Prisão feita por:
             Policiais envolvidos:
         `;
 
         await navigator.clipboard.writeText(textToClipboard);
 
-		setShowSuccessAlert(!showSuccessAlert);
+        setShowSuccessAlert(!showSuccessAlert);
         resetAll();
     }
 
@@ -80,6 +84,7 @@ const PrisonResumeCard = ({
         setColabored(false);
         setConfessed(false);
         setIsFisrtOffender(false);
+        setAdvogado(false);
         setCrimes([]);
         setDialogOpen(!dioalogOpen);
     }
@@ -87,24 +92,24 @@ const PrisonResumeCard = ({
     const resolveTrafficTicket = (): number | undefined => {
         const totalTrafficTicket = crimes.reduce((acumulador, numero) => acumulador + numero.trafficTicket, 0) + INITAL_TRAFFIC_TICKET;
 
-        const  discountCalulator = new DiscountCalculator();
-        return discountCalulator.calculateDiscount(totalTrafficTicket, isFisrtOffender, confessed, colabored);
+        const discountCalulator = new DiscountCalculator();
+        return discountCalulator.calculateDiscount(totalTrafficTicket, isFisrtOffender, advogado, confessed, colabored);
     }
 
     const resolveMonths = (): number => crimes.reduce(
-			(acumulador, numero) => acumulador + numero.months, 0
-	);
+        (acumulador, numero) => acumulador + numero.months, 0
+    );
 
     const fianca = (): number | undefined => {
         const totalFianca = crimes.reduce((acumulador, numero) => acumulador + numero.fianca, 0);
 
-        const  discountCalulator = new DiscountCalculator();
-        return discountCalulator.calculateDiscount(totalFianca, isFisrtOffender, confessed, colabored);
+        const discountCalulator = new DiscountCalculator();
+        return discountCalulator.calculateDiscount(totalFianca, isFisrtOffender, advogado, confessed, colabored);
     }
 
     return (
         <>
-			{showSuccessAlert && <CustomAlert message="Dados exportados com sucesso!" type="success" className="prisonResumeSuccessAlert"/>}
+            {showSuccessAlert && <CustomAlert message="Dados exportados com sucesso!" type="success" className="prisonResumeSuccessAlert" />}
             <Box className="featherDescriptionCard" sx={{ minWidth: 275 }}>
                 <Card variant="outlined">
                     <CardContent>
@@ -117,11 +122,11 @@ const PrisonResumeCard = ({
                         </Typography>
 
                         <Typography variant="h5">
-                            Total de multa: {resolveTrafficTicket()!.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
+                            Total de multa: {resolveTrafficTicket()!.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                         </Typography>
 
                         <Typography variant="h5">
-                            Total de Fiança: {fianca()!.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
+                            Total de Fiança: {fianca()!.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                         </Typography>
                     </CardContent>
 
