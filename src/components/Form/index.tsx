@@ -29,6 +29,7 @@ interface FormProps {
     delacao: boolean
 }
 
+
 interface AlertType {
     type: 'warning' | 'info' | 'error' | 'success';
     message: string;
@@ -140,7 +141,7 @@ const Form = ({
 
                     <FormControlLabel
                         control={<Checkbox checked={delacao} onChange={() => setDelacao(!delacao)} />}
-                        label=" Delação Premiada (-50%)"
+                        label=" Delação Premiada(-50%)"
                     />
                 </FormGroup>
             </form>
