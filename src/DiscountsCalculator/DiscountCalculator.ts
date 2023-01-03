@@ -27,26 +27,23 @@ export class DiscountCalculator {
         confessed?: boolean,
         colabored?: boolean
     ): number | undefined {
-        const discountChain =
-            new DiscountIsFirstOffenderAndConfessedAndColaboredAndAdvogado(
-                new DiscountIsFirstOffenderAndConfessedAndColabored(
+        const discountChain = new DiscountIsFirstOffenderAndConfessedAndColaboredAndAdvogado(
+            new DiscountIsFirstOffenderAndConfessedAndColabored(
+                new DiscountIsFirstOffenderAndConfessedAndAdvogado(
                     new DiscountIsFirstOffenderAndColaboredAndAdvogado(
-                        new DiscountIsFirstOffenderAndColabored(
-                            new DiscountConfessedAndColaboredAndAdvogado(
-                                new DiscountIsFirstOffenderAndConfessedAndAdvogado(
-                                    new DiscountIsFirstOffenderAndConfessed(
-                                            new DiscountConfessedAndColabored(
-                                                new DiscountIsFirstOffenderAndAdvogado(
-                                                    new DiscountAdvogadoAndConfessed(
-                                                        new DiscountAdvogadoAndColabored(
-                                                            new DiscountColabored(
-                                                                new DiscountAdvogado(
-                                                                    new DiscountDelacao(
-                                                                        new DiscountIsFirstOffender(
-                                                                            new DiscountConfessed(
-                                                                                new WithoutDiscount()
-                                                                            )
-                                                                        )
+                        new DiscountConfessedAndColaboredAndAdvogado(
+                            new DiscountAdvogadoAndColabored(
+                                new DiscountIsFirstOffenderAndAdvogado(
+                                    new DiscountAdvogadoAndConfessed(
+                                        new DiscountConfessedAndColabored(
+                                            new DiscountIsFirstOffenderAndColabored(
+                                                new DiscountIsFirstOffenderAndConfessed(
+                                                    new DiscountAdvogado(
+                                                        new DiscountColabored(
+                                                            new DiscountDelacao(
+                                                                new DiscountConfessed(
+                                                                    new DiscountIsFirstOffender(
+                                                                        new WithoutDiscount()
                                                                     )
                                                                 )
                                                             )
@@ -54,20 +51,18 @@ export class DiscountCalculator {
                                                     )
                                                 )
                                             )
-                                        
+                                        )
                                     )
                                 )
                             )
                         )
-
-
-                    
+                    )
                 )
-                )
-
-                
             )
+        )
+        
 
+           
         return discountChain.calculateDiscount(
             value,
             isFisrtOffender,
