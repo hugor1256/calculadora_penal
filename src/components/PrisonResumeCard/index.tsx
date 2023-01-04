@@ -68,12 +68,15 @@ const PrisonResumeCard = ({
             return;
         }
 
+        const crimeFormatado = crimes.map(crime => `${crime.crime}(${crime.type})`).join(",")
+
         const textToClipboard = `
             Prisioneiro: ${prisonersName},
             Passaporte: ${prisonersPassaport},
             Total da pena: ${resolveMonths()} meses,
             Total de multa: ${(resolveTrafficTicket()! + INITAL_TRAFFIC_TICKET).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
             Valor da Fiança: ${(fianca()!).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
+            Crimes Cometidos: ${crimeFormatado},
             Prisão feita por:
             Policiais envolvidos:
         `;
@@ -109,11 +112,13 @@ const PrisonResumeCard = ({
         return discountCalulator.calculateDiscount(totalMonths, isFisrtOffender, advogado, delacao, confessed, colabored);
     }
 
-    const fianca = (): number | undefined => {
+    const fianca = (): number | undefined | string => {
+        if (crimes.some(crime => !crime.haveBail))
+            return "Crime Inafiançavel"
         const totalFianca = crimes.reduce((acumulador, numero) => acumulador + numero.fianca, 0);
 
         const discountCalulator = new DiscountCalculator();
-        return discountCalulator.calculateDiscount(totalFianca);
+        return discountCalulator.calculateDiscount(totalFianca, isFisrtOffender, advogado, delacao, confessed, colabored);
     }
 
     return (

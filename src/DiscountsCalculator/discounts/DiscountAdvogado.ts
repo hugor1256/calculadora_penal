@@ -15,31 +15,6 @@ export class DiscountAdvogado extends Discount {
       return applyDiscount(30, value);
     }
 
-    // if (advogado && isFisrtOffender) {
-    //   return applyDiscount(40, value);
-    // }
-
-    // if (advogado && confessed) {
-    //   return applyDiscount(40, value);
-    // }
-
-    // if (advogado && colabored) {
-    //   return applyDiscount(40, value);
-    // }
-
-    // if (advogado && isFisrtOffender && confessed) {
-    //   return applyDiscount(50, value);
-    // }
-
-    // if (advogado && isFisrtOffender && colabored) {
-    //   return applyDiscount(50, value);
-    // }
-
-    // if (confessed && isFisrtOffender && colabored) {
-    //   return applyDiscount(30, value);
-    // }
-
-
     return this.nextDiscount?.calculateDiscount(
       value,
       isFisrtOffender,
