@@ -71,14 +71,14 @@ const PrisonResumeCard = ({
         const crimeFormatado = crimes.map(crime => `${crime.crime}(${crime.type})`).join(",")
 
         const textToClipboard =`
-            Prisioneiro: ${prisonersName},
-            Passaporte: ${prisonersPassaport},
-            Total da pena: ${resolveMonths()} meses,
-            Total de multa: ${(resolveTrafficTicket()! + INITAL_TRAFFIC_TICKET).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
-            Valor da Fiança: ${(fianca()!).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
-            Crimes Cometidos: ${crimeFormatado},
-            Prisão feita por:
-            Policiais envolvidos:
+Prisioneiro: ${prisonersName},
+Passaporte: ${prisonersPassaport},
+Total da pena: ${resolveMonths()} meses,
+Total de multa: ${(resolveTrafficTicket()! + INITAL_TRAFFIC_TICKET).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
+Valor da Fiança: ${(fianca()!).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
+Crimes Cometidos: ${crimeFormatado},
+Prisão feita por:
+Policiais envolvidos:
         `;
 
         await navigator.clipboard.writeText(textToClipboard);

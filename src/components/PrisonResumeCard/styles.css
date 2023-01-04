@@ -20,6 +20,7 @@
 
 .MuiPaper-root{
 	border: 2px solid gray !important;
+	background-color: gray;
 }
 
 .Width{
@@ -46,4 +47,9 @@ margin-top: 10px;
 
 .totalPena{
 	margin-top: 10px;
+}
+
+.MuiTableCell-root{
+	background-color: gray !important;
+	border: 2px solid gray !important;
 }
