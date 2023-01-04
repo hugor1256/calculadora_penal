@@ -9,8 +9,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Chip from '@mui/material/Chip';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 import { Crime } from '../../interfaces/crime';
+import './style.css';
+
 
 interface PrisonTableProps {
     crimes: Crime[];
@@ -27,7 +28,7 @@ const PrisonTable = ({
         <TableContainer style={{marginTop: '20px', maxHeight: '300px'}} component={Paper}>
             <Table sx={{ minWidth: 650 }} size="small" aria-label="A table of crimes for GTA RP">
                 <TableHead>
-                    <TableRow>
+                    <TableRow className='tableRow'>
                         <TableCell>Crime</TableCell>
                         <TableCell>Tipo</TableCell>
                         <TableCell>Meses</TableCell>

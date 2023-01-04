@@ -9,6 +9,19 @@
     margin-top: 50px;
 }
 
+.background{
+	background-color: gray;
+}
+
+.ExportDados{
+	background-color: gray;
+	
+}
+
+.MuiPaper-root{
+	border: 2px solid gray !important;
+}
+
 .Width{
     display: flex;
 }

@@ -70,7 +70,7 @@ const PrisonResumeCard = ({
 
         const crimeFormatado = crimes.map(crime => `${crime.crime}(${crime.type})`).join(",")
 
-        const textToClipboard = `
+        const textToClipboard =`
             Prisioneiro: ${prisonersName},
             Passaporte: ${prisonersPassaport},
             Total da pena: ${resolveMonths()} meses,
@@ -121,19 +121,19 @@ const PrisonResumeCard = ({
         return discountCalulator.calculateDiscount(totalFianca, isFisrtOffender, advogado, delacao, confessed, colabored);
     }
 
+   
     return (
         <>
             {showSuccessAlert && <CustomAlert message="Dados exportados com sucesso!" type="success" className="prisonResumeSuccessAlert" />}
             <Box className="featherDescriptionCard" sx={{ minWidth: 275 }}>
                 <Card variant="outlined">
-                    <CardContent>
+                    <CardContent className="background">
                         <div className='Width'>
                             <div className='Underline'>
                                 <Typography sx={{ fontSize: 20}} fontFamily="fantasy" gutterBottom>
                                 Resumo da prisão
                                 </Typography>
                             </div>
-                                
                         </div>
                     <div className='totalPena'>
                         <Typography variant="h5" component="div">
@@ -155,18 +155,12 @@ const PrisonResumeCard = ({
                                 OBS: REDUÇÃO MAXIMA DA PENA = 50%
                         </Typography>
                     </div>
-                       
-                                
                     </CardContent>
                 <div className='ExportDados'>
                     <CardActions>
                         <Button onClick={() => setDialogOpen(!dioalogOpen)} size="small">Exportar dados</Button>
                     </CardActions>
                 </div>
-                   
-
-                   
-
                 </Card>
             </Box>
 
