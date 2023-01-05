@@ -52,6 +52,7 @@ const PrisonResumeCard = ({
     const [showSuccessAlert, setShowSuccessAlert] = useState<boolean>(false);
     const [prisonersName, setPrisonersName] = useState<string>('');
     const [prisonersPassaport, setPrisonersPassaport] = useState<string>('');
+    const [reducaoAplicada, setReducaoAplicada] = useState<string>('');
 
     useEffect(() => {
         if (showSuccessAlert) {
@@ -64,15 +65,16 @@ const PrisonResumeCard = ({
     const INITAL_TRAFFIC_TICKET = 20000;
 
     const handleExportPrisonersData = async () => {
-        if (!prisonersName || !prisonersPassaport) {
+        if (!prisonersName || !prisonersPassaport || !reducaoAplicada) {
             return;
         }
 
         const crimeFormatado = crimes.map(crime => `${crime.crime}(${crime.type})`).join(",")
 
-        const textToClipboard =`
+        const textToClipboard = `
 Prisioneiro: ${prisonersName},
 Passaporte: ${prisonersPassaport},
+Redução aplicada: ${reducaoAplicada}% ,
 Total da pena: ${resolveMonths()} meses,
 Total de multa: ${(resolveTrafficTicket()! + INITAL_TRAFFIC_TICKET).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
 Valor da Fiança: ${(fianca()!).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
@@ -121,7 +123,7 @@ Policiais envolvidos:
         return discountCalulator.calculateDiscount(totalFianca, isFisrtOffender, advogado, delacao, confessed, colabored);
     }
 
-   
+
     return (
         <>
             {showSuccessAlert && <CustomAlert message="Dados exportados com sucesso!" type="success" className="prisonResumeSuccessAlert" />}
@@ -130,37 +132,37 @@ Policiais envolvidos:
                     <CardContent className="background">
                         <div className='Width'>
                             <div className='Underline'>
-                                <Typography sx={{ fontSize: 20}} fontFamily="fantasy" gutterBottom>
-                                Resumo da prisão
+                                <Typography sx={{ fontSize: 20 }} fontFamily="fantasy" gutterBottom>
+                                    Resumo da prisão
                                 </Typography>
                             </div>
                         </div>
-                    <div className='totalPena'>
-                        <Typography variant="h5" component="div">
-                            Tempo total da pena: {resolveMonths()} meses
-                        </Typography>
-                    </div>
-                    <div className='totalMulta'>
-                        <Typography variant="h5">
-                            Total de multa: {resolveTrafficTicket()!.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                        </Typography>
-                    </div>
-                    <div className='totalFianca'>
-                        <Typography variant="h5">
-                            Total de Fiança: {fianca()!.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
-                        </Typography>
-                    </div>
-                    <div className='Reducao'>
-                        <Typography sx={{ fontSize: 16, color: "#FF0000;" }} fontFamily="fantasy" gutterBottom>
+                        <div className='totalPena'>
+                            <Typography variant="h5" component="div">
+                                Tempo total da pena: {resolveMonths()} meses
+                            </Typography>
+                        </div>
+                        <div className='totalMulta'>
+                            <Typography variant="h5">
+                                Total de multa: {resolveTrafficTicket()!.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                            </Typography>
+                        </div>
+                        <div className='totalFianca'>
+                            <Typography variant="h5">
+                                Total de Fiança: {fianca()!.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                            </Typography>
+                        </div>
+                        <div className='Reducao'>
+                            <Typography sx={{ fontSize: 16, color: "#FF0000;" }} fontFamily="fantasy" gutterBottom>
                                 OBS: REDUÇÃO MAXIMA DA PENA = 50%
-                        </Typography>
-                    </div>
+                            </Typography>
+                        </div>
                     </CardContent>
-                <div className='ExportDados'>
-                    <CardActions>
-                        <Button onClick={() => setDialogOpen(!dioalogOpen)} size="small">Exportar dados</Button>
-                    </CardActions>
-                </div>
+                    <div className='ExportDados'>
+                        <CardActions>
+                            <Button onClick={() => setDialogOpen(!dioalogOpen)} size="small">Exportar dados</Button>
+                        </CardActions>
+                    </div>
                 </Card>
             </Box>
 
@@ -197,11 +199,23 @@ Policiais envolvidos:
                         onChange={e => setPrisonersPassaport(e.target.value)}
                         required
                     />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="reducao"
+                        label="Redução aplicada"
+                        type="number"
+                        fullWidth
+                        variant="standard"
+                        value={reducaoAplicada}
+                        onChange={e => setReducaoAplicada(e.target.value)}
+                        required
+                    />
                 </DialogContent>
 
                 <DialogActions>
                     <Button onClick={() => setDialogOpen(!dioalogOpen)}>Fechar</Button>
-                    <Button disabled={!prisonersName || !prisonersPassaport} onClick={handleExportPrisonersData}>Exportar dados</Button>
+                    <Button disabled={!prisonersName || !prisonersPassaport || !reducaoAplicada} onClick={handleExportPrisonersData}>Exportar dados</Button>
                 </DialogActions>
             </Dialog>
         </>
