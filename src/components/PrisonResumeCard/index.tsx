@@ -69,7 +69,7 @@ const PrisonResumeCard = ({
             return;
         }
 
-        const crimeFormatado = crimes.map(crime => `${crime.crime}(${crime.type})`).join(",")
+        const crimeFormatado = crimes.map(crime => `${crime.crime}`).join(",  ")
 
         const textToClipboard = `
 Prisioneiro: ${prisonersName},
