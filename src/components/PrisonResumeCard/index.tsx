@@ -236,7 +236,7 @@ Policiais envolvidos:
                         autoFocus
                         margin="dense"
                         id="reducao"
-                        label="Nome do Advogado"
+                        label="Nome do Advogado (Se houver)"
                         type="text"
                         fullWidth
                         variant="standard"
