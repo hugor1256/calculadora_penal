@@ -20,6 +20,7 @@ import CustomAlert from '../Alert';
 import './styles.css';
 
 interface PrisonResumeCardProps {
+    houveAdvogado: boolean
     crimes: Crime[]
     isFisrtOffender: boolean
     advogado: boolean
@@ -32,6 +33,7 @@ interface PrisonResumeCardProps {
     setConfessed: Dispatch<SetStateAction<boolean>>;
     setAdvogado: Dispatch<SetStateAction<boolean>>;
     setDelacao: Dispatch<SetStateAction<boolean>>;
+    setHouveAdvogado: Dispatch<SetStateAction<boolean>>;
 }
 
 const PrisonResumeCard = ({
@@ -53,6 +55,8 @@ const PrisonResumeCard = ({
     const [prisonersName, setPrisonersName] = useState<string>('');
     const [prisonersPassaport, setPrisonersPassaport] = useState<string>('');
     const [reducaoAplicada, setReducaoAplicada] = useState<string>('');
+    const [nomeAdvogado, setnomeAdvogado] = useState<string>('');
+    const [houveAdvogado, setHouveAdvogado] = useState<string>('');
 
     useEffect(() => {
         if (showSuccessAlert) {
@@ -65,7 +69,7 @@ const PrisonResumeCard = ({
     const INITAL_TRAFFIC_TICKET = 20000;
 
     const handleExportPrisonersData = async () => {
-        if (!prisonersName || !prisonersPassaport || !reducaoAplicada) {
+        if (!prisonersName || !prisonersPassaport || !reducaoAplicada || !houveAdvogado) {
             return;
         }
 
@@ -79,6 +83,8 @@ Total da pena: ${resolveMonths()} meses,
 Total de multa: ${(resolveTrafficTicket()! + INITAL_TRAFFIC_TICKET).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
 Valor da Fiança: ${(fianca()!).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })},
 Crimes Cometidos: ${crimeFormatado},
+Houve Advogado: ${houveAdvogado}
+Nome do Advogado: ${nomeAdvogado.toUpperCase()},
 Prisão feita por:
 Policiais envolvidos:
         `;
@@ -211,11 +217,38 @@ Policiais envolvidos:
                         onChange={e => setReducaoAplicada(e.target.value)}
                         required
                     />
+
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="reducao"
+                        label="Réu pagou fiança? (Sim/Não)"
+                        type="text"
+                        fullWidth
+                        variant="standard"
+                        value={houveAdvogado}
+                        onChange={e => setHouveAdvogado(e.target.value)}
+                        required
+                    />
+
+
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="reducao"
+                        label="Nome do Advogado"
+                        type="text"
+                        fullWidth
+                        variant="standard"
+                        value={nomeAdvogado}
+                        onChange={e => setnomeAdvogado(e.target.value)}
+                        required
+                    />
                 </DialogContent>
 
                 <DialogActions>
                     <Button onClick={() => setDialogOpen(!dioalogOpen)}>Fechar</Button>
-                    <Button disabled={!prisonersName || !prisonersPassaport || !reducaoAplicada} onClick={handleExportPrisonersData}>Exportar dados</Button>
+                    <Button disabled={!prisonersName || !prisonersPassaport || !reducaoAplicada || !houveAdvogado} onClick={handleExportPrisonersData}>Exportar dados</Button>
                 </DialogActions>
             </Dialog>
         </>

@@ -15,6 +15,7 @@ const Main = () => {
     const [colabored, setColabored] = useState<boolean>(false);
     const [advogado, setAdvogado] = useState<boolean>(false);
     const [delacao, setDelacao] = useState<boolean>(false);
+    const [houveAdvogado, setHouveAdvogado] = useState<boolean>(false);
 
     return (
         <main className="main">
@@ -40,6 +41,7 @@ const Main = () => {
 
             <PrisonResumeCard
                 isFisrtOffender={isFisrtOffender}
+                houveAdvogado={houveAdvogado}
                 advogado={advogado}
                 delacao={delacao}
                 confessed={confessed}
@@ -51,6 +53,7 @@ const Main = () => {
                 setConfessed={setConfessed}
                 setAdvogado={setAdvogado}
                 setDelacao={setDelacao}
+                setHouveAdvogado={setHouveAdvogado}
             />
         </main>
     )
